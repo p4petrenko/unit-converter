@@ -1,0 +1,130 @@
+package converter;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class convert extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField input;
+	private JTextField outpout;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					convert frame = new convert();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public convert() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		input = new JTextField();
+		input.setBounds(10, 80, 96, 20);
+		contentPane.add(input);
+		input.setColumns(10);
+		
+		JComboBox aSelect = new JComboBox();
+		aSelect.addItem("Pounds");
+		aSelect.addItem("Kilos");
+		aSelect.addItem("Grams");
+		aSelect.addItem("Ounce");
+		aSelect.addItem("Tonne");
+		aSelect.setBounds(116, 80, 96, 20);
+		contentPane.add(aSelect);
+		
+		JLabel lblTo = new JLabel("TO");
+		lblTo.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblTo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTo.setBounds(230, 82, 50, 14);
+		contentPane.add(lblTo);
+		
+		JComboBox bSelect = new JComboBox();
+		bSelect.addItem("Pounds");
+		bSelect.addItem("Kilos");
+		bSelect.addItem("Grams");
+		bSelect.addItem("Ounces");
+		bSelect.addItem("Tonnes");
+		bSelect.setBounds(290, 80, 96, 20);
+		contentPane.add(bSelect);
+		
+		outpout = new JTextField();
+		outpout.setBounds(222, 190, 103, 23);
+		contentPane.add(outpout);
+		outpout.setColumns(10);
+		
+		JButton btnCalculate = new JButton("CALCULATE");
+		btnCalculate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			
+				//gets the choices from the comboBoxes, Epilogh means choice in Greek
+				String aEpilogh = aSelect.getSelectedItem().toString();
+				String bEpoligh = bSelect.getSelectedItem().toString();
+				
+				//variables to compare the text and use in the next if statement
+				String sPounds = "Pounds";
+				String sKilos = "Kilos";
+				String sGrams = "Grams";
+				String sOunces = "Ounces";
+				String sTonnes = "Tonnes";
+				
+				//variables
+				double pounds;
+				double kilos;
+				double grams;
+				double ounces;
+				double tonnes;
+				
+				//sets the number of the variable
+				if (aEpilogh == sPounds) 
+					pounds = Double.parseDouble(aEpilogh);
+				else if (aEpilogh == sKilos) 
+					kilos = Double.parseDouble(aEpilogh);
+				else if (aEpilogh == sGrams)
+					grams = Double.parseDouble(aEpilogh);
+				else if (aEpilogh == sOunces)
+					ounces = Double.parseDouble(aEpilogh);
+				else if (aEpilogh == sTonnes)
+					tonnes = Double.parseDouble(aEpilogh);
+				else
+					System.out.println("Choose unit");
+				
+				
+			
+			
+			
+			}
+		});
+		btnCalculate.setBounds(89, 189, 103, 23);
+		contentPane.add(btnCalculate);
+	}
+}
